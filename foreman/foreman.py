@@ -58,6 +58,10 @@ ORGANIZATIONS = 'organizations'
 ORGANIZATION = 'organization'
 OS_DEFAULT_TEMPLATES = 'os_default_templates'
 OS_DEFAULT_TEMPLATE = 'os_default_template'
+SMART_CLASS_VARIABLES = 'smart_class_parameters'
+SMART_CLASS_VARIABLE = 'smart_class_parameter'
+OVERRIDE_VALUES = 'override_values'
+OVERRIDE_VALUE = 'override_value'
 PARAMETERS = 'parameters'
 PARAMETER = 'parameter'
 PARTITION_TABLES = 'ptables'
@@ -777,6 +781,20 @@ class Foreman:
     def delete_operatingsystem_default_template(self, id, template_id):
         return self.delete_resource(resource_type=OPERATINGSYSTEMS, resource_id=id,
                                     component=OS_DEFAULT_TEMPLATES, component_id=template_id)
+
+    def get_smart_class_variables_override_values(self, id):
+        return self.get_resources(resource_type=SMART_CLASS_VARIABLES, resource_id=id, component=OVERRIDE_VALUES)
+
+    def get_smart_class_variables_override_value(self, id, template_id):
+        return self.get_resource(resource_type=SMART_CLASS_VARIABLES, resource_id=id,
+                                 component=OVERRIDE_VALUES, component_id=template_id)
+
+    def create_smart_class_variables_override_values(self, id):
+        return self.get_resources(resource_type=SMART_CLASS_VARIABLES, resource_id=id, component=OVERRIDE_VALUES)
+
+    def create_smart_class_variables_override_value(self, id, data):
+        return self.create_resource(resource_type=SMART_CLASS_VARIABLES, resource=OVERRIDE_VALUE, data=data,
+                                    resource_id=id, component=OVERRIDE_VALUES)
 
     def get_partition_tables(self):
         return self.get_resources(resource_type=PARTITION_TABLES)
